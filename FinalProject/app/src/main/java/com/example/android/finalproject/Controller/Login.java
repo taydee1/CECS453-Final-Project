@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.finalproject.R;
+import com.example.android.finalproject.View.AdminActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -70,9 +71,9 @@ public class Login extends AppCompatActivity {
                     return;
                 }
 
-                /*Creates a signIn method which takes in an email address and password, validates
-                them , and signs in a user with the signInWithEmailandPassword method
-                */
+               /*Creates a signIn method which takes in an email address and password, validates
+               them , and signs in a user with the signInWithEmailandPassword method
+               */
                 firebaseAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -100,4 +101,12 @@ public class Login extends AppCompatActivity {
         Intent register = new Intent(Login.this, Register.class);
         startActivity(register);
     }
+
+    public void Temp(View view) {
+        //Intent to register form
+        Intent temp = new Intent(Login.this, AdminActivity.class);
+        startActivity(temp);
+    }
 }
+
+

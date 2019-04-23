@@ -11,6 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Controller.Quiz"></activity>
         <activity android:name=".Controller.Register" />
+        <activity android:name=".View.AdminActivity" />
         <activity android:name=".Controller.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
