@@ -17,8 +17,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.android.finalproject.Model.Question;
 import com.example.android.finalproject.R;
-import com.google.gson.Gson;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -70,8 +68,6 @@ public class AdminActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
 
     public void onRadioButtonClicked(View view) {
@@ -95,8 +91,11 @@ public class AdminActivity extends AppCompatActivity {
         }
     }
 
-
-
+    /**
+     * Using Volley to handle a PUT request
+     * @param jsonObject
+     * @param url
+     */
     private void sendRequest(JSONObject jsonObject, String url) {
         RequestQueue queue = Volley.newRequestQueue(this);
 
@@ -142,7 +141,6 @@ public class AdminActivity extends AppCompatActivity {
                 return null;
             }
         };
-
         queue.add(putRequest);
     }
 }
