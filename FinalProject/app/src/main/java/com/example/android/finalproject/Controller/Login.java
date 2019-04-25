@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.finalproject.R;
-import com.example.android.finalproject.View.AdminActivity;
+import com.example.android.finalproject.View.AdminMenu;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -104,7 +104,7 @@ public class Login extends AppCompatActivity {
 
     public void Temp(View view) {
         //Intent to register form
-        Intent temp = new Intent(Login.this, AdminActivity.class);
+        Intent temp = new Intent(Login.this,  AdminMenu.class);
         startActivity(temp);
     }
 }

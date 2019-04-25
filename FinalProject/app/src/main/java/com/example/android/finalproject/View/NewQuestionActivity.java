@@ -14,6 +14,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.android.finalproject.Model.Question;
 import com.example.android.finalproject.R;
@@ -24,7 +25,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdminActivity extends AppCompatActivity {
+public class NewQuestionActivity extends AppCompatActivity {
 
     EditText enterQuestion;
     EditText choiceA;
@@ -37,7 +38,7 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin);
+        setContentView(R.layout.activity_newquestion);
         getSupportActionBar().setTitle("Enter a new question");
 
         enterQuestion = findViewById(R.id.enterQuestion);
@@ -47,25 +48,49 @@ public class AdminActivity extends AppCompatActivity {
         submitButton = findViewById(R.id.submit);
         answer = null;
 
+        /**
+         * Submitting a new question results in:
+         *  1- requesting a count of total questions to the counter object
+         *  2- requesting a PUT
+         *  3- incrementing the counter and overwriting the current count with new count
+         *
+         *  The counter is its own json object since firebase doesn't keep a counter?
+         */
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Question question = new Question();
 
-                JSONObject jsonObject = new JSONObject();
-                try {
-                    jsonObject.put("question", enterQuestion.getText().toString());
-                    jsonObject.put("a", choiceA.getText().toString());
-                    jsonObject.put("b", choiceB.getText().toString());
-                    jsonObject.put("c", choiceC.getText().toString());
-                    jsonObject.put("answer", answer);
-                } catch (JSONException e) {
-                    // handle exception
-                }
+                sendGetRequest(new VolleyCallback() {
+                    @Override
+                    public void onSuccess(String result) {
+                        Question question = new Question();
 
-                String url = "https://finalproject-c6f51.firebaseio.com/questions/6.json";
-                sendRequest(jsonObject,url);
+                        JSONObject jsonObject = new JSONObject();
+                        try {
+                            jsonObject.put("question", enterQuestion.getText().toString());
+                            jsonObject.put("a", choiceA.getText().toString());
+                            jsonObject.put("b", choiceB.getText().toString());
+                            jsonObject.put("c", choiceC.getText().toString());
+                            jsonObject.put("answer", answer);
+                        } catch (JSONException e) {
+                            Log.e("JSONObject Error", "sendGetRequest Error");
+                        }
+                        int count =  Integer.parseInt(result);
+                        count++;
+                        String url = "https://finalproject-c6f51.firebaseio.com/questions/"+count+".json";
+                        sendPutRequest(jsonObject,url);
 
+
+                        JSONObject jsonCount = new JSONObject();
+                        try{
+                            jsonCount.put("count", count);
+                        }catch (JSONException e){
+                            Log.e("JSONObject Error", "sendGetRequest Error");
+                        }
+                        url = "https://finalproject-c6f51.firebaseio.com/counter.json";
+                        sendPutRequest(jsonCount,url);
+                    }
+                });
             }
         });
     }
@@ -96,7 +121,7 @@ public class AdminActivity extends AppCompatActivity {
      * @param jsonObject
      * @param url
      */
-    private void sendRequest(JSONObject jsonObject, String url) {
+    private void sendPutRequest(JSONObject jsonObject, String url) {
         RequestQueue queue = Volley.newRequestQueue(this);
 
         final JSONObject jsonObject_ = jsonObject;
@@ -143,5 +168,34 @@ public class AdminActivity extends AppCompatActivity {
         };
         queue.add(putRequest);
     }
+
+    /**
+     * Using Volley to handle Get request using a callback
+     * @param callback
+     */
+    private void sendGetRequest(final VolleyCallback callback){
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url ="url will be replace in the callback";
+
+        // Request a string response from the provided URL.
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Log.d("COUNT FOR QUESTIONS:", response.toString());
+                        callback.onSuccess(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.e("Error Respose", "Volley Error");
+                    }
+        });
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest);
+    }
+
 }
+
 
