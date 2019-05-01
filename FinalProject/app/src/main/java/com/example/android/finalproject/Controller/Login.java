@@ -41,7 +41,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setTitle("Quick Quiz");
 
         //Casting Views
         loginEmail_editText = findViewById(R.id.loginEmail);
@@ -81,7 +81,7 @@ public class Login extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     //If login is successful, toast displays
                                     Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(getApplicationContext(), Quiz.class));
+                                    startActivity(new Intent(getApplicationContext(), Home.class));
 
                                 } else {
                                     //If login fails successful, toast displays
