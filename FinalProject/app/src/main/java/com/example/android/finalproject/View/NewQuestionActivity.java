@@ -1,6 +1,7 @@
 package com.example.android.finalproject.View;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -39,7 +41,7 @@ public class NewQuestionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newquestion);
-        getSupportActionBar().setTitle("Enter a new question");
+//        getSupportActionBar().setTitle("Enter a new question");
 
         enterQuestion = findViewById(R.id.enterQuestion);
         choiceA = findViewById(R.id.choiceA);
@@ -61,6 +63,7 @@ public class NewQuestionActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 sendGetRequest(new VolleyCallback() {
+
                     @Override
                     public void onSuccess(String result) {
                         Question question = new Question();
@@ -141,6 +144,7 @@ public class NewQuestionActivity extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         // error
                         Log.d("Error.Response", error.toString());
+                        Toast.makeText(getApplicationContext(),"Entry Error!",Toast.LENGTH_LONG).show();
                     }
                 }
         ) {
@@ -175,8 +179,7 @@ public class NewQuestionActivity extends AppCompatActivity {
      */
     private void sendGetRequest(final VolleyCallback callback){
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="url will be replace in the callback";
-
+        String url = "https://finalproject-c6f51.firebaseio.com/counter/count.json";
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
@@ -184,6 +187,10 @@ public class NewQuestionActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.d("COUNT FOR QUESTIONS:", response.toString());
                         callback.onSuccess(response);
+                        Toast.makeText(getApplicationContext(),"Entry added!",Toast.LENGTH_LONG).show();
+                        Intent register = new Intent(NewQuestionActivity.this, AdminMenu.class);
+                        startActivity(register);
+
                     }
                 },
                 new Response.ErrorListener() {

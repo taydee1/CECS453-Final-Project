@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controller.Quiz"></activity>
+        <activity android:name=".View.ViewDelete"></activity>
+        <activity android:name=".Controller.Quiz" />
         <activity android:name=".Controller.Home" />
         <activity android:name=".View.AdminMenu" />
         <activity android:name=".Controller.Register" />

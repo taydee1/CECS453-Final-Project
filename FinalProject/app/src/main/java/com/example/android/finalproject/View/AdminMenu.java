@@ -13,13 +13,19 @@ public class AdminMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_menu);
-        getSupportActionBar().setTitle("Administrator Menu");
+//        getSupportActionBar().setTitle("Administrator Menu");
     }
 
     //Button to click if the user wants to register an account
     public void AddQuestion(View view) {
         //Intent to register form
         Intent register = new Intent(AdminMenu.this, NewQuestionActivity.class);
+        startActivity(register);
+    }
+
+    public void DisplayAll(View view) {
+        //Intent to register form
+        Intent register = new Intent(AdminMenu.this, ViewDelete.class);
         startActivity(register);
     }
 }
