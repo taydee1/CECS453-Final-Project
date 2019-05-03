@@ -52,7 +52,7 @@ public class NewQuestionActivity extends AppCompatActivity {
          * Submitting a new question results in:
          *  1- requesting a count of total questions to the counter object
          *  2- requesting a PUT
-         *  3- incrementing the counter and overwriting the current count with new count
+         *  3- incrementing the counter and overwriting theq current count with new count
          *
          *  The counter is its own json object since firebase doesn't keep a counter?
          */
