@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
+import android.text.TextUtils;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -61,6 +62,31 @@ public class NewQuestionActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Checking Fields
+                if (TextUtils.isEmpty(enterQuestion.getText().toString())) {
+                    Toast.makeText(NewQuestionActivity.this, "Please Enter A Question", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(choiceA.getText().toString())) {
+                    Toast.makeText(NewQuestionActivity.this, "Please Enter Choice A", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(choiceB.getText().toString())) {
+                    Toast.makeText(NewQuestionActivity.this, "Please Enter Choice B", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(choiceC.getText().toString())) {
+                    Toast.makeText(NewQuestionActivity.this, "Please Enter Choice C", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (answer == null) {
+                    Toast.makeText(NewQuestionActivity.this, "Please Select An Answer", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
                 sendGetRequest(new VolleyCallback() {
 
