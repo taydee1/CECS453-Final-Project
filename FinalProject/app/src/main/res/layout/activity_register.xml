@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.Register">
+    tools:context=".Controller.Register"
+    android:background="@drawable/gradient1">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,9 +14,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
-        android:textSize="50dp"
-        android:textColor="@color/colorPrimary"
-        />
+        android:textSize="100dp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/alegreya_black"/>
+
     <EditText
         android:id="@+id/fullName"
         android:layout_width="match_parent"
@@ -24,7 +26,8 @@
         android:layout_centerVertical="true"
         android:background="@drawable/edittext_background"
         android:hint="Full Name"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:fontFamily="@font/alegreya_black"/>
 
     <EditText
         android:id="@+id/email"
@@ -33,7 +36,8 @@
         android:layout_below="@+id/userName"
         android:background="@drawable/edittext_background"
         android:hint="Email"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:fontFamily="@font/alegreya_black"/>
 
     <EditText
         android:id="@+id/userName"
@@ -42,7 +46,8 @@
         android:layout_below="@+id/fullName"
         android:background="@drawable/edittext_background"
         android:hint="User Name"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:fontFamily="@font/alegreya_black"/>
 
 
     <EditText
@@ -53,7 +58,8 @@
         android:background="@drawable/edittext_background"
         android:hint="password"
         android:inputType="textPassword"
-        android:padding="10dp" />
+        android:padding="10dp"
+        android:fontFamily="@font/alegreya_black"/>
 
     <Button
         android:id="@+id/registerButton"
@@ -63,7 +69,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_background"
-        android:text="Register" />
+        android:text="Register"
+        android:fontFamily="@font/alegreya_black"/>
 
     <TextView
         android:id="@+id/alreadyRegistered"
@@ -73,7 +80,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:onClick="Login"
-        android:text="Already Registered? Click Here to Login" />
+        android:text="Already Registered? Click Here to Login"
+        android:fontFamily="@font/alegreya_black"/>
 
 
 </RelativeLayout>

@@ -13,7 +13,6 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-        getSupportActionBar().setTitle("Quick Quiz");
     }
 
     public void playGame(View view)
@@ -26,7 +25,8 @@ public class Home extends AppCompatActivity {
     public void quitGame(View view)
     {
         //Exits game
-        System.exit(1);
+        finish();
+        moveTaskToBack(true);
     }
     }
 

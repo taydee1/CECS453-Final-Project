@@ -4,26 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.Login">
+    tools:context=".Controller.Login"
+    android:background="@drawable/gradient1">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Login"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:textStyle="bold"
-        android:textSize="50dp"
-        android:textColor="@color/colorPrimary"
-        />
+        android:fontFamily="@font/alegreya_black"
+        android:text="Login"
+        android:textColor="@android:color/white"
+        android:textSize="100dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/loginEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
         android:background="@drawable/edittext_background"
+        android:fontFamily="@font/alegreya_black"
         android:hint="Email"
         android:padding="10dp" />
 
@@ -34,6 +35,7 @@
         android:layout_below="@+id/loginEmail"
         android:layout_marginTop="5dp"
         android:background="@drawable/edittext_background"
+        android:fontFamily="@font/alegreya_black"
         android:hint="Password"
         android:inputType="textPassword"
         android:padding="10dp" />
@@ -46,6 +48,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_background"
+        android:fontFamily="@font/alegreya_black"
         android:text="Login" />
 
     <TextView
@@ -55,6 +58,7 @@
         android:layout_below="@id/loginBtn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:fontFamily="@font/alegreya_black"
         android:onClick="Register"
         android:text="Not Registered? Click Here to Register" />
 
@@ -64,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/temp"
         android:layout_marginTop="69dp"
+        android:fontFamily="@font/alegreya_black"
         android:onClick="Temp"
         android:text="To admin activity" />
 

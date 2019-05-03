@@ -41,7 +41,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        getSupportActionBar().setTitle("Quick Quiz");
 
         //Casting Views
         loginEmail_editText = findViewById(R.id.loginEmail);

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Controller.Home">
+    tools:context=".Controller.Home"
+    android:background="@drawable/gradient1">
 
     <TextView
         android:layout_width="wrap_content"
@@ -13,8 +14,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
         android:textStyle="bold"
-        android:textSize="50dp"
-        android:textColor="@color/colorPrimary"
+        android:textSize="80dp"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/alegreya_black"
         />
 
     <Button
@@ -26,7 +28,8 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/button_background"
         android:text="Play Game"
-        android:onClick="playGame"/>
+        android:onClick="playGame"
+        android:fontFamily="@font/alegreya_black"/>
 
     <Button
         android:id="@+id/quitGame"
@@ -37,6 +40,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/button_background"
         android:text="Quit"
-        android:onClick="quitGame"/>
+        android:onClick="quitGame"
+        android:fontFamily="@font/alegreya_black"/>
 
 </RelativeLayout>
