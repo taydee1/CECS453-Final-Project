@@ -1,5 +1,12 @@
 package com.example.android.finalproject.Model;
 
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
+import java.util.Map;
+
+@IgnoreExtraProperties
 public class Question {
 
     String question, id;
@@ -10,13 +17,13 @@ public class Question {
     public Question(String question, String choice1,
                     String choice2, String choice3, String answer) {
 //        this.id = id;
-        this.question = question;
+//        this.question = question;
         this.a = choice1;
         this.b = choice2;
         this.c = choice3;
         this.answer = answer;
     }
-
+//
 //    public String getId() {
 //        return id;
 //    }
@@ -74,6 +81,19 @@ public class Question {
                 ", c='" + c + '\'' +
                 ", answer='" + answer + '\'' +
                 '}';
+    }
+
+    @Exclude
+    public Map<String, Object> toMap() {
+        HashMap<String, Object> result = new HashMap<>();
+//        result.put("id", id);
+        result.put("question", question);
+        result.put("answer", answer);
+        result.put("a", a);
+        result.put("b", b);
+        result.put("c", c);
+
+        return result;
     }
 }
 

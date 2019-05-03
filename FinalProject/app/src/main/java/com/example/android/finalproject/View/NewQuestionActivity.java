@@ -2,6 +2,7 @@ package com.example.android.finalproject.View;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.android.finalproject.Model.Question;
 import com.example.android.finalproject.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -38,11 +45,18 @@ public class NewQuestionActivity extends AppCompatActivity {
     String answer;
     ProgressDialog pDialog;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newquestion);
 //        getSupportActionBar().setTitle("Enter a new question");
+
+
+//        mDatabase.child("questions").child("20").
+
+
 
         enterQuestion = findViewById(R.id.enterQuestion);
         choiceA = findViewById(R.id.choiceA);
