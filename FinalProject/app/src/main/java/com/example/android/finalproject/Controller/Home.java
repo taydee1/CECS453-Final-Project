@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.android.finalproject.R;
+import com.example.android.finalproject.View.QuizView;
 
 public class Home extends AppCompatActivity {
 
