@@ -6,30 +6,45 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.android.finalproject.Model.Question;
 import com.example.android.finalproject.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.RouteViewHolder> {
 
+    public interface  OnItemClickListener{
+        void onItemClicked(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        mListener = listener;
+    }
     private final ArrayList<Question> mQuestions;
     private LayoutInflater mInflater;
     private int currentPosition;
-    private Context mContext;
+    private OnItemClickListener mListener;
+    private DatabaseReference mDatabase;
 
     public DataAdapter(ArrayList<Question> questions){
         this.mQuestions = questions;
     }
 
-    class RouteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class RouteViewHolder extends RecyclerView.ViewHolder{
         public TextView questionItemView;
         public TextView answerItemView;
         public TextView answerAItemView;
         public TextView answerBItemView;
         public TextView answerCItemView;
+        public TextView id_view;
+        public ImageButton btnDelete;
+
 
         public RouteViewHolder(View v){
             super(v);
@@ -38,16 +53,20 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.RouteViewHolde
             answerAItemView = v.findViewById(R.id.answerA);
             answerBItemView = v.findViewById(R.id.answerB);
             answerCItemView = v.findViewById(R.id.answerC);
-            v.setOnClickListener(this);
+            id_view = v.findViewById(R.id.id_);
+            btnDelete = v.findViewById(R.id.btnDelete);
+
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    mListener.onItemClicked(getAdapterPosition());
+                    Log.d("CLICKED", ""+getAdapterPosition() + " "+ id_view.getText());
+                    mDatabase = FirebaseDatabase.getInstance().getReference("/questions/"+id_view.getText());
+                    mDatabase.removeValue();
+                }
+            });
         }
 
-        @Override
-        public void onClick(View v) {
-            // Prepend "Clicked! " to the text in the view.
-//            questionItemView.setText ("Clicked! "+ getPosition());
-            Log.d("CLICKED", ""+getPosition());
-//            clickListener.onRecyclerClickListener(v,getPosition());
-        }
     }
 
     // Create new views (invoked by the layout manager)
@@ -76,7 +95,9 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.RouteViewHolde
         holder.answerBItemView.setText("B: "+curr.getB());
         holder.answerCItemView.setText("C: "+curr.getC());
         holder.answerItemView.setText(mAnswer);
+        holder.id_view.setText(curr.getId());
         currentPosition = position;
+
     }
 
     // Return the size of your dataset (invoked by the layout manager)

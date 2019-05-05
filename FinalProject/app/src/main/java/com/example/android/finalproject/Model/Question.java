@@ -16,21 +16,21 @@ public class Question {
 
     public Question(String question, String choice1,
                     String choice2, String choice3, String answer) {
-//        this.id = id;
-//        this.question = question;
+        this.id = null;
+        this.question = question;
         this.a = choice1;
         this.b = choice2;
         this.c = choice3;
         this.answer = answer;
     }
-//
-//    public String getId() {
-//        return id;
-//    }
-//
-//    public void setId(String id) {
-//        this.id = id;
-//    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getQuestion() {
         return question;

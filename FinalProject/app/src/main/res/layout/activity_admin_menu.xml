@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient1"
     tools:context=".View.AdminMenu">
 
     <Button
@@ -15,10 +16,14 @@
         android:layout_marginEnd="8dp"
         android:text="Add New Question"
         android:onClick="AddQuestion"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/alegreya_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 
     <Button
         android:id="@+id/button2"
@@ -29,21 +34,11 @@
         android:layout_marginEnd="8dp"
         android:text="Display All Questions"
         android:onClick="DisplayAll"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/alegreya_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addQuestion" />
 
-    <Button
-        android:id="@+id/deleteQuestion"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="8dp"
-        android:text="Delete Question"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
 </android.support.constraint.ConstraintLayout>
