@@ -45,18 +45,10 @@ public class NewQuestionActivity extends AppCompatActivity {
     String answer;
     ProgressDialog pDialog;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newquestion);
-//        getSupportActionBar().setTitle("Enter a new question");
-
-
-//        mDatabase.child("questions").child("20").
-
-
 
         enterQuestion = findViewById(R.id.enterQuestion);
         choiceA = findViewById(R.id.choiceA);

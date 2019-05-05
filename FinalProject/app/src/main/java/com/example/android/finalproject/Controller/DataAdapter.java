@@ -56,17 +56,16 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.RouteViewHolde
             id_view = v.findViewById(R.id.id_);
             btnDelete = v.findViewById(R.id.btnDelete);
 
+            //onClick delete item
             btnDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    mListener.onItemClicked(getAdapterPosition());
                     Log.d("CLICKED", ""+getAdapterPosition() + " "+ id_view.getText());
                     mDatabase = FirebaseDatabase.getInstance().getReference("/questions/"+id_view.getText());
                     mDatabase.removeValue();
                 }
             });
         }
-
     }
 
     // Create new views (invoked by the layout manager)
@@ -97,7 +96,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.RouteViewHolde
         holder.answerItemView.setText(mAnswer);
         holder.id_view.setText(curr.getId());
         currentPosition = position;
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
@@ -105,5 +103,4 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.RouteViewHolde
     public int getItemCount() {
         return mQuestions.size();
     }
-
 }

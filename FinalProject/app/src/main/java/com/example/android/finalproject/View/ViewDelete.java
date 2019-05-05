@@ -25,7 +25,6 @@ public class ViewDelete extends AppCompatActivity{
     private RecyclerView recyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
     private DatabaseReference mDatabase;
 
     @Override
