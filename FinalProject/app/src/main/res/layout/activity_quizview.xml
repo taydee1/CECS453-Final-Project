@@ -33,7 +33,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Which thing is alive?"
+        android:text="What class is this?"
         android:textSize="20sp"
         android:padding="8dp"
         android:layout_marginBottom="40dp"
@@ -43,7 +43,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="bird"
+        android:text="CECS 445"
         android:background="#0091EA"
         android:textColor="#fff"
         android:layout_marginBottom="24dp"
@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:background="#0091EA"
-        android:text="door"
+        android:text="CECS 428"
         android:textColor="#fff" />
 
     <Button
@@ -64,16 +64,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:background="#0091EA"
-        android:text="rock"
+        android:text="CECS 453"
         android:textColor="#fff" />
 
-    <!--<Button-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="quit"-->
-        <!--android:background="#B71C1C"-->
-        <!--android:textColor="#fff"-->
-        <!--android:layout_marginBottom="24dp"-->
-        <!--android:id="@+id/quit"/>-->
 
 </LinearLayout>
