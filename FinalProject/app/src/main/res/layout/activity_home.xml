@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".Controller.Home"
     android:background="@drawable/gradient1">
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,4 +42,9 @@
         android:onClick="quitGame"
         android:fontFamily="@font/alegreya_black"/>
 
+
+
 </RelativeLayout>
+
+
+

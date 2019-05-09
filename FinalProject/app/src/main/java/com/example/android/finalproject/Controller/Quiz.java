@@ -56,6 +56,7 @@ public class Quiz extends AppCompatActivity {
         mButtonChoice2 = (Button) findViewById(R.id.choice2);
         mButtonChoice3 = (Button) findViewById(R.id.choice3);
     }
+}
 
 
       //  updateQuestion();
@@ -193,7 +194,7 @@ public class Quiz extends AppCompatActivity {
 //    }
 
 
-    public void getQuestionCount() {
+    /*public void getQuestionCount() {
 
         mDatabase = FirebaseDatabase.getInstance().getReference("/questions");
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -219,3 +220,4 @@ public class Quiz extends AppCompatActivity {
     }
 
 }
+*/
