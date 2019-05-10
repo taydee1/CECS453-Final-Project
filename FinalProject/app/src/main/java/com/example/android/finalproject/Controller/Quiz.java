@@ -17,8 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
-    final static long INTERVAL = 1000;
-    final static long TIMEOUT = 7000;
+    final static long INTERVAL = 2000;
+    final static long TIMEOUT = 8000;
     int progressValue = 0;
 
     CountDownTimer mCountDown;
@@ -40,10 +40,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-        //firebase
 
-//        database = FirebaseDatabase.getInstance();
-//        questions = database.getReference("/questions/");
 
         //Views
         txtScore = (TextView)findViewById(R.id.txtScore);
@@ -65,7 +62,7 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         mCountDown.cancel();
-        if(index < 3) {
+        if(index < totalQuestion-1) {
             Button clickedButton = (Button) view;
             if(clickedButton.getText().equals(Common.questionList.get(index).getAnswer())){
                 score += 10;
@@ -88,6 +85,9 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             txtScore.setText(String.format("%d", score));
         }
         else {
+            /** Anytime the game is over, hand over data from quiz to results screen
+             *   ResultsActivity
+             *  **/
             Intent intent = new Intent(this, ResultsActivity.class);
             Bundle dataSend = new Bundle();
             dataSend.putInt("SCORE", score);
@@ -123,7 +123,10 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
 
-        totalQuestion = Common.questionList.size();
+        totalQuestion = Common.questionList.size()-1;
+        if(totalQuestion > 4){
+            totalQuestion = 5;
+        }
 
         mCountDown = new CountDownTimer(TIMEOUT, INTERVAL) {
             @Override

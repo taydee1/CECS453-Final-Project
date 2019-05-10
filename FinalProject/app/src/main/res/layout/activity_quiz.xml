@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,17 +8,27 @@
     android:background="@drawable/gradient1"
     tools:context=".Controller.Quiz">
 
-    <TextView
-        android:id="@+id/question_text"
-        android:visibility="invisible"
+    <android.support.v7.widget.CardView
+        android:layout_width="381dp"
+        android:layout_height="238dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="45dp"
-        android:textColor="@android:color/white"
-        android:textSize="20pt"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="12dp"
+        android:paddingTop="30dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp">
+
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="18pt"
+            android:visibility="invisible" />
+    </android.support.v7.widget.CardView>
 
     <RelativeLayout
         android:layout_alignParentBottom="true"
