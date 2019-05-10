@@ -17,13 +17,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-/**********************
- * Members
- * Taylor Daniels
- *
- */
-
-
 
 //Activity to log in a user or redirects them to a register form
 public class Login extends AppCompatActivity {

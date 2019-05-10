@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item android:id="@+id/password"
+
+        android:icon="@drawable/ic_password"
+
+        android:title="Change Password"/>
+
+    <item android:id="@+id/profile"
+
+        android:icon="@drawable/ic_person"
+
+        android:title="Change Profile"/>
+
+    <item android:id="@+id/about"
+
+        android:icon="@drawable/ic_about"
+
+        android:title="About"/>
+
+    <item android:id="@+id/help"
+
+        android:icon="@drawable/ic_help"
+
+        android:title="Help"/>
+
+    <item android:id="@+id/logout"
+
+
+        android:title="Logout"/>
+
+
+
+</menu>

@@ -25,9 +25,7 @@
         <activity android:name=".View.AdminMenu" />
         <activity android:name=".Controller.Register" />
         <activity android:name=".View.NewQuestionActivity" />
-        <activity android:name=".Controller.Login">
-
-        </activity>
+        <activity android:name=".Controller.Login"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
