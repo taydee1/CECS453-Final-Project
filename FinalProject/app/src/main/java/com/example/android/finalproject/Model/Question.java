@@ -9,8 +9,8 @@ import java.util.Map;
 @IgnoreExtraProperties
 public class Question {
 
-    String question, id;
-    String a, b, c, answer;
+    private String question, id;
+    private String a, b, c, answer;
 
     public Question(){}
 

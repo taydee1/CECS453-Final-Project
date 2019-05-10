@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ce4e61fc-c1af-438a-b720-246c6f2ff8f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/FinalProject/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProject/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProject/app/src/main/java/com/example/android/finalproject/Controller/Quiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProject/app/src/main/java/com/example/android/finalproject/Controller/Quiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FinalProject/app/src/main/res/layout/activity_quizview.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProject/app/src/main/res/layout/activity_quizview.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/FinalProject/app/src/main/java/com/example/android/finalproject/Controller/QuizClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinalProject/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/FinalProject/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinalProject/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FinalProject/.idea/vcs.xml" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +18,11 @@
     <session id="79413033">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
     </session>
@@ -28,8 +31,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="104" />
-    <option name="y" value="63" />
+    <option name="x" value="169" />
+    <option name="y" value="108" />
     <option name="width" value="1103" />
     <option name="height" value="692" />
   </component>
@@ -115,6 +118,33 @@
               <item name="example" type="462c0819:PsiDirectoryNode" />
               <item name="android" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="CECS453-Final-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CECS453-Final-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CECS453-Final-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CECS453-Final-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="FinalProject" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="example" type="462c0819:PsiDirectoryNode" />
+              <item name="android" type="462c0819:PsiDirectoryNode" />
+              <item name="finalproject" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -151,7 +181,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="104" y="63" width="1103" height="692" extended-state="0" />
+    <frame x="169" y="108" width="1103" height="692" extended-state="0" />
     <layout>
       <window_info id="Captures" order="0" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.32994455" />

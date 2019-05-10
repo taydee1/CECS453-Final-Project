@@ -1,221 +1,146 @@
 package com.example.android.finalproject.Controller;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import com.example.android.finalproject.Model.Question;
+
+import com.example.android.finalproject.Model.Common;
 import com.example.android.finalproject.R;
-import com.example.android.finalproject.View.AdminMenu;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-//import com.firebase.client.ValueEventListener;
-import com.google.firebase.database.DatabaseError;
+import com.example.android.finalproject.ResultsActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
+public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
+    final static long INTERVAL = 1000;
+    final static long TIMEOUT = 7000;
+    int progressValue = 0;
 
+    CountDownTimer mCountDown;
 
-import java.util.ArrayList;
+    int index = 0, score = 0,
+            thisQuestion = 0,
+            totalQuestion,
+            correctAnswer;
 
-public class Quiz extends AppCompatActivity {
-    private DatabaseReference mDatabase;
+//    FirebaseDatabase database;
+//    DatabaseReference questions;
 
-
-    private TextView mScoreView;
-    private TextView mQuestion;
-    private Button mButtonChoice1;
-    private Button mButtonChoice2;
-    private Button mButtonChoice3;
-    private Button mButtonChoice4;
-    private int count = 0;
-
-    private String mAnswer;
-    private int mScore = 0;
-    private int mQuestionNumber = 1;
-
-    private Firebase mQuestionRef, mChoice1Ref, mChoice2Ref, mChoice3Ref, mChoice4Ref,
-            mAnswerRef;
+    ProgressBar progressBar;
+    Button btnA, btnB, btnC, btnD;
+    TextView txtScore, txtQuestionNum, question_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quizview);
+        setContentView(R.layout.activity_quiz);
 
-        mScoreView = (TextView) findViewById(R.id.score);
-        mQuestion = (TextView) findViewById(R.id.question);
+        //firebase
 
-        mButtonChoice1 = (Button) findViewById(R.id.choice1);
-        mButtonChoice2 = (Button) findViewById(R.id.choice2);
-        mButtonChoice3 = (Button) findViewById(R.id.choice3);
+//        database = FirebaseDatabase.getInstance();
+//        questions = database.getReference("/questions/");
+
+        //Views
+        txtScore = (TextView)findViewById(R.id.txtScore);
+        txtQuestionNum = (TextView)findViewById(R.id.txtTotalQuestion);
+        question_text = (TextView)findViewById(R.id.question_text);
+
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        btnA = (Button)findViewById(R.id.btnAnswerA);
+        btnB = (Button)findViewById(R.id.btnAnswerB);
+        btnC = (Button)findViewById(R.id.btnAnswerC);
+
+        btnA.setOnClickListener(this);
+        btnB.setOnClickListener(this);
+        btnC.setOnClickListener(this);
     }
 
 
-      //  updateQuestion();
+    @Override
+    public void onClick(View view) {
+        mCountDown.cancel();
+        if(index < 3) {
+            Button clickedButton = (Button) view;
+            if(clickedButton.getText().equals(Common.questionList.get(index).getAnswer())){
+                score += 10;
+                correctAnswer++;
+                showQuestion(++index); // next Question
 
-//        mButtonChoice1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (mButtonChoice1.getText().equals(mAnswer)) {
-//                    mScore = mScore + 1;
-//                    updateQuestion();
-//                } else {
-//                    updateQuestion();
-//                }
-//            }
-//
-//        });
-//
-//        mButtonChoice2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (mButtonChoice2.getText().equals(mAnswer)) {
-//                    mScore = mScore + 1;
-//                    updateQuestion();
-//                } else {
-//                    updateQuestion();
-//                }
-//            }
-//
-//
-//        });
-//
-//        mButtonChoice3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (mButtonChoice3.getText().equals(mAnswer)) {
-//                    mScore = mScore + 1;
-//                    updateQuestion();
-//                } else {
-//                    updateQuestion();
-//                }
-//            }
-//
-//
-//        });
-//
-//    }
-
-//    public void updateQuestion() {
-//
-//        if (count == 2) {
-//            Intent temp = new Intent(Quiz.this, Home.class);
-//            startActivity(temp);
-//        }
-//        mQuestionRef = new Firebase("https://finalproject-c6f51.firebaseio.com/questions/" + mQuestionNumber + "/question");
-//        mChoice2Ref = new Firebase("https://finalproject-c6f51.firebaseio.com/questions/" + mQuestionNumber + "/b");
-//        mChoice3Ref = new Firebase("https://finalproject-c6f51.firebaseio.com/questions/" + mQuestionNumber + "/c");
-//
-//
-//        mQuestionRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                String question = dataSnapshot.getValue(String.class);
-//                mQuestion.setText(question);
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-//
-//        mChoice1Ref = new Firebase("https://finalproject-c6f51.firebaseio.com/questions/" + mQuestionNumber + "/a");
-//        mChoice1Ref.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                String choice = dataSnapshot.getValue(String.class);
-//                mButtonChoice1.setText(choice);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-//
-//        mChoice2Ref.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                String choice = dataSnapshot.getValue(String.class);
-//                mButtonChoice2.setText(choice);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-//
-//        mChoice3Ref.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                String choice = dataSnapshot.getValue(String.class);
-//                mButtonChoice3.setText(choice);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-//
-//        mAnswerRef = new Firebase("https://finalproject-c6f51.firebaseio.com/questions/" + mQuestionNumber + "/answer");
-//        mAnswerRef.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                mAnswer = dataSnapshot.getValue(String.class);
-//            }
-//
-//            @Override
-//            public void onCancelled(FirebaseError firebaseError) {
-//
-//            }
-//        });
-//
-//        mQuestionNumber++;
-//        count++;
-//    }
-//
-//    public void Temp(View view) {
-//        //Intent to register form
-//
-//    }
-
-
-    public void getQuestionCount() {
-
-        mDatabase = FirebaseDatabase.getInstance().getReference("/questions");
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Question que = snapshot.getValue(Question.class);
-                    Log.d("index?: ", snapshot.getKey().toString());
-                    Log.d("WHAAAA", snapshot.getValue().toString());
-                    Log.d("FIREBAse QUESTION: ", que.toString());
-
-
-                }
-                Log.d("FIREBAse COUNT: ", "" + dataSnapshot.getChildrenCount());
+            }else{
+                showQuestion(++index);
             }
+//            else {
+//                Intent intent = new Intent(this, ResultsActivity.class);
+//                Bundle dataSend = new Bundle();
+//                dataSend.putInt("SCORE", score);
+//                dataSend.putInt("TOTAL", totalQuestion);
+//                dataSend.putInt("CORRECT", correctAnswer);
+//                intent.putExtras(dataSend);
+//                startActivity(intent);
+//                finish();
+//            }
+            txtScore.setText(String.format("%d", score));
+        }
+        else {
+            Intent intent = new Intent(this, ResultsActivity.class);
+            Bundle dataSend = new Bundle();
+            dataSend.putInt("SCORE", score);
+            dataSend.putInt("TOTAL", totalQuestion);
+            dataSend.putInt("CORRECT", correctAnswer);
+            intent.putExtras(dataSend);
+            startActivity(intent);
+            finish();
+        }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-        });
     }
 
+    private void showQuestion (int index){
+        if (index < totalQuestion)
+        {
+            thisQuestion++;
+            txtQuestionNum.setText(String.format("%d / %d", thisQuestion, totalQuestion));
+            progressBar.setProgress(0);
+            progressValue = 0;
+
+            question_text.setText(Common.questionList.get(index).getQuestion());
+            question_text.setVisibility(View.VISIBLE);
+
+        }
+        btnA.setText(Common.questionList.get(index).getA());
+        btnB.setText(Common.questionList.get(index).getB());
+        btnC.setText(Common.questionList.get(index).getC());
+
+        mCountDown.start();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        totalQuestion = Common.questionList.size();
+
+        mCountDown = new CountDownTimer(TIMEOUT, INTERVAL) {
+            @Override
+            public void onTick(long minisec) {
+                progressBar.setProgress(progressValue);
+                progressValue++;
+            }
+
+            @Override
+            public void onFinish() {
+                mCountDown.cancel();
+                showQuestion(++index);
+
+            }
+        };
+        showQuestion(index);
+    }
 }
+
+
