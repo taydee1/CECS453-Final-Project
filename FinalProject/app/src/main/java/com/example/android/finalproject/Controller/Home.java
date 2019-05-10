@@ -19,7 +19,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+
+import static com.example.android.finalproject.Model.Common.questionList;
 
 public class Home extends AppCompatActivity {
 
@@ -53,8 +56,8 @@ public class Home extends AppCompatActivity {
 
     private void loadQuestion() {
 
-        if(Common.questionList.size() > 0)
-            Common.questionList.clear();
+        if(questionList.size() > 0)
+            questionList.clear();
 
         questions.addValueEventListener(new ValueEventListener() {
             @Override
@@ -62,16 +65,15 @@ public class Home extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Question que = snapshot.getValue(Question.class);
                     que.setId(snapshot.getKey());
-                    Common.questionList.add(que);
+                    questionList.add(que);
                 }
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-
         //Random List
-        Collections.shuffle(Common.questionList);
+        Collections.shuffle(questionList);
     }
 }
 

@@ -17,8 +17,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
-    final static long INTERVAL = 2000;
-    final static long TIMEOUT = 8000;
+    final static long INTERVAL = 1000;
+    final static long TIMEOUT = 7000;
     int progressValue = 0;
 
     CountDownTimer mCountDown;
