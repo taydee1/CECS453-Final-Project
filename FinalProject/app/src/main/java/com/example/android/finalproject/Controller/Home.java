@@ -1,6 +1,7 @@
 package com.example.android.finalproject.Controller;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.android.finalproject.R;
 import com.example.android.finalproject.View.QuizView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class Home extends AppCompatActivity {
 
@@ -25,12 +27,17 @@ public class Home extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
 
     private NavigationView navigationView;
+    FirebaseAuth firebaseAuth;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
 
         drawerLayout = (DrawerLayout) findViewById(R.id.activity_main);
 
@@ -56,28 +63,36 @@ public class Home extends AppCompatActivity {
 
                     case R.id.password:
 
-                        Toast.makeText(getApplicationContext(), "Change Password", Toast.LENGTH_SHORT).show();
+                        Intent changePassword = new Intent(Home.this, Password.class);
+                        startActivity(changePassword);
                         break;
 
                     case R.id.profile:
+                        Intent profilePage = new Intent(Home.this, ChangeProfile.class);
+                        startActivity(profilePage);
 
-                        Toast.makeText(getApplicationContext(), "Change Profile", Toast.LENGTH_SHORT).show();
                         break;
 
                     case R.id.about:
+                        Intent aboutPage = new Intent(Home.this, AboutPage.class);
+                        startActivity(aboutPage);
 
-                        Toast.makeText(getApplicationContext(), "About", Toast.LENGTH_SHORT).show();
                         break;
 
                     case R.id.help:
-
-                        Toast.makeText(getApplicationContext(), "Help", Toast.LENGTH_SHORT).show();
+                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","admin@admin.com", null));
+                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Help");
+                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
                         break;
 
                     case R.id.logout:
 
-                        Toast.makeText(getApplicationContext(), "Logout", Toast.LENGTH_SHORT).show();
+                        firebaseAuth.getInstance().signOut();
+                        Intent logout = new Intent(Home.this, Login.class);
+                        startActivity(logout);
+                        finish();
                         break;
+
 
                     default:
 
@@ -121,6 +136,12 @@ public class Home extends AppCompatActivity {
         //Exits game
         finish();
         moveTaskToBack(true);
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+
     }
 }
 

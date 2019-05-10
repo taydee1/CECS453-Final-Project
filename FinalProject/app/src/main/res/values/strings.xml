@@ -5,4 +5,21 @@
     <string name="Open">open</string>
     <string name="Close">close</string>
 
+    <string name="Paragraph">
+
+
+The Mobile Quizzing is an android application that provides a new technique of Playing Quiz using mobile
+phones. This application is especially developed for People who like to play challenging Quiz. The project
+provides
+an effective challenge to the player.
+The system has an admin login that has overall control over
+Question  and  Answer  in  the  Server.  Admin  feed  the  Question  and  Answer  in  to  the  System.  These
+questions are randomly picked and sent on users android devices
+.
+User have to first create an account
+into the system for playing quiz. At the end of the Quiz the system checks all the answer and generates a
+brief report card
+.
+    </string>
+
 </resources>

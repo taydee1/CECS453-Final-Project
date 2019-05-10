@@ -97,7 +97,7 @@ public class Register extends AppCompatActivity {
 
                                             //Toast which displays if registration is successful and redirects user to Quiz activity
                                             Toast.makeText(Register.this, "Registration Complete", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(), Quiz.class));
+                                            startActivity(new Intent(getApplicationContext(), Home.class));
                                         }
                                     });
 

@@ -99,6 +99,12 @@ public class Login extends AppCompatActivity {
         Intent temp = new Intent(Login.this,  AdminMenu.class);
         startActivity(temp);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+
+    }
 }
 
 

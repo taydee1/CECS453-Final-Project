@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Controller.ChangeProfile"></activity>
+        <activity android:name=".Controller.AboutPage" />
+        <activity android:name=".Controller.Password" />
         <activity android:name=".Controller.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +28,7 @@
         <activity android:name=".View.AdminMenu" />
         <activity android:name=".Controller.Register" />
         <activity android:name=".View.NewQuestionActivity" />
-        <activity android:name=".Controller.Login"></activity>
+        <activity android:name=".Controller.Login" />
 
         <meta-data
             android:name="preloaded_fonts"
