@@ -12,8 +12,6 @@ import android.widget.TextView;
 import com.example.android.finalproject.Model.Common;
 import com.example.android.finalproject.R;
 import com.example.android.finalproject.ResultsActivity;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
