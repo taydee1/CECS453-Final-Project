@@ -22,6 +22,34 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+import android.content.Intent;
+import android.net.Uri;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.android.finalproject.Model.User;
+import com.example.android.finalproject.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class ChangeProfile extends AppCompatActivity {
     EditText name;
     EditText user;
@@ -41,7 +69,6 @@ public class ChangeProfile extends AppCompatActivity {
         changeProfileButton = findViewById(R.id.changeProfileButton);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference("User");
 
         changeProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,7 +89,7 @@ public class ChangeProfile extends AppCompatActivity {
                 }
 
 
-               // updateUser(fullName, userName);
+                updateUser(fullName, userName);
 
 
             }
@@ -73,21 +100,21 @@ public class ChangeProfile extends AppCompatActivity {
 
     }
 
-    /*
-    private boolean updateUser(String name, String userName)
-    {
-        User information = new User(name, userName);
 
-        FirebaseDatabase.getInstance().getReference("User")
-                .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                .setValue(information);
+    private void updateUser(String fullName, String username) {
+
+        User information = new User(fullName, username);
+
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference("User")
+                .child(FirebaseAuth.getInstance().getCurrentUser().getUid());
+
+        database.child("fullName").setValue(fullName);
+        database.child("userName").setValue(username);
 
         Toast.makeText(this, "Profile Updated", Toast.LENGTH_SHORT).show();
 
-        return true;
-
-
+        Intent homePage = new Intent(ChangeProfile.this, Home.class);
+        startActivity(homePage);
 
     }
-    */
 }
