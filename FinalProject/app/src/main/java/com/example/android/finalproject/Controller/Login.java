@@ -1,10 +1,12 @@
 package com.example.android.finalproject.Controller;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 //Activity to log in a user or redirects them to a register form
@@ -28,7 +31,6 @@ public class Login extends AppCompatActivity {
 
     //Declaring an instance of FirebaseAuth
     private FirebaseAuth firebaseAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,12 +94,6 @@ public class Login extends AppCompatActivity {
         //Intent to register form
         Intent register = new Intent(Login.this, Register.class);
         startActivity(register);
-    }
-
-    public void Temp(View view) {
-        //Intent to register form
-        Intent temp = new Intent(Login.this,  AdminMenu.class);
-        startActivity(temp);
     }
 
     @Override

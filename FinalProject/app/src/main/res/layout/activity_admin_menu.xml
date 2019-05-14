@@ -26,7 +26,7 @@
 
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/displayQuestions"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -40,5 +40,24 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addQuestion" />
+
+    <Button
+        android:id="@+id/mainMenu"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/alegreya_black"
+        android:onClick="Home"
+        android:text="Return Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/displayQuestions"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

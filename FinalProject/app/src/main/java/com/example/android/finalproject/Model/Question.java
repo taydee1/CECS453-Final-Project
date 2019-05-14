@@ -82,19 +82,6 @@ public class Question {
                 ", answer='" + answer + '\'' +
                 '}';
     }
-
-    @Exclude
-    public Map<String, Object> toMap() {
-        HashMap<String, Object> result = new HashMap<>();
-//        result.put("id", id);
-        result.put("question", question);
-        result.put("answer", answer);
-        result.put("a", a);
-        result.put("b", b);
-        result.put("c", c);
-
-        return result;
-    }
 }
 
 
