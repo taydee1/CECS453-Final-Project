@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
+import com.example.android.finalproject.Controller.Home;
 import com.example.android.finalproject.R;
 
 public class AdminMenu extends AppCompatActivity {
@@ -26,6 +26,12 @@ public class AdminMenu extends AppCompatActivity {
     public void DisplayAll(View view) {
         //Intent to register form
         Intent register = new Intent(AdminMenu.this, ViewDelete.class);
+        startActivity(register);
+    }
+
+    public void Home(View view) {
+        //Intent to register form
+        Intent register = new Intent(AdminMenu.this, Home.class);
         startActivity(register);
     }
 }

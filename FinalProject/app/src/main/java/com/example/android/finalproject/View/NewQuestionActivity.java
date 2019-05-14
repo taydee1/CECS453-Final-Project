@@ -138,18 +138,19 @@ public class NewQuestionActivity extends AppCompatActivity {
         switch(view.getId()) {
             case R.id.optionA:
                 if (checked)
-                    answer = "a";
+                    answer = choiceA.getText().toString();
                 break;
             case R.id.optionB:
                 if (checked)
-                    answer = "b";
+                    answer = choiceA.getText().toString();
                 break;
             case R.id.optionC:
                 if (checked)
-                    answer = "c";
+                    answer = choiceA.getText().toString();
                 break;
         }
     }
+
 
     /**
      * Using Volley to handle a PUT request

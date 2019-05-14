@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,8 +24,10 @@ import android.widget.Toast;
 
 import com.example.android.finalproject.Model.Question;
 import com.example.android.finalproject.R;
+import com.example.android.finalproject.View.AdminMenu;
 import com.example.android.finalproject.View.QuizView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,6 +53,7 @@ public class Home extends AppCompatActivity {
 
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +73,6 @@ public class Home extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
 
 
 
@@ -125,15 +128,27 @@ public class Home extends AppCompatActivity {
 
                 }
 
-
                 return true;
-
-
             }
 
         });
 
 
+        //check if admin uid
+        String admin_ = "RwobSJTRjkP3MDi1ejcf9lcCHex1";
+        if(firebaseAuth.getUid().equals(admin_)){
+            Menu menu = navigationView.getMenu();
+            menu.add("Admin Menu").setIcon(R.drawable.admin).setOnMenuItemClickListener(
+                    new MenuItem.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            Intent admin = new Intent(Home.this, AdminMenu.class);
+                            startActivity(admin);
+                            return true;
+                        }
+                    }
+            );
+        }
     }
 
 

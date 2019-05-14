@@ -42,16 +42,16 @@ public class ViewDelete extends AppCompatActivity{
                 questions = new ArrayList<>();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Question que = snapshot.getValue(Question.class);
-                    Log.d("index?: ", snapshot.getKey().toString());
-                    Log.d("WHAAAA", snapshot.getValue().toString());
-                    Log.d("FIREBAse QUESTION: ", que.toString());
+                    Log.d("key: ", snapshot.getKey().toString());
+                    Log.d("value", snapshot.getValue().toString());
+                    Log.d("Firebase question: ", que.toString());
                     que.setId(snapshot.getKey());
                     questions.add(que);
 
                 }
                 mAdapter = new DataAdapter(questions);
                 recyclerView.setAdapter(mAdapter);
-                Log.d("FIREBAse COUNT: ", "" + dataSnapshot.getChildrenCount());
+                Log.d("FIREBASE COUNT: ", "" + dataSnapshot.getChildrenCount());
             }
 
             @Override
