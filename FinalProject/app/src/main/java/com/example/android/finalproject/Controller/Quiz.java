@@ -23,11 +23,9 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
     int index = 0, score = 0,
             thisQuestion = 0,
-            totalQuestion,
+            totalQuestion = 2,
             correctAnswer;
 
-//    FirebaseDatabase database;
-//    DatabaseReference questions;
 
     ProgressBar progressBar;
     Button btnA, btnB, btnC, btnD;
@@ -37,8 +35,6 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-
 
         //Views
         txtScore = (TextView)findViewById(R.id.txtScore);
@@ -60,26 +56,39 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         mCountDown.cancel();
-        if(index < totalQuestion-1) {
+        if(index < totalQuestion) {
             Button clickedButton = (Button) view;
-            if(clickedButton.getText().equals(Common.questionList.get(index).getAnswer())){
+            if(clickedButton.getText().equals(Common.questionList.get(index).getAnswer()) && index == totalQuestion-1){
+                score += 10;
+                correctAnswer++;
+                Intent intent = new Intent(this, ResultsActivity.class);
+                Bundle dataSend = new Bundle();
+                dataSend.putInt("SCORE", score);
+                dataSend.putInt("TOTAL", totalQuestion);
+                dataSend.putInt("CORRECT", correctAnswer);
+                intent.putExtras(dataSend);
+                startActivity(intent);
+                finish();
+            }
+            else if(clickedButton.getText().equals(Common.questionList.get(index).getAnswer())){
                 score += 10;
                 correctAnswer++;
                 showQuestion(++index); // next Question
 
-            }else{
+            }
+            else if (clickedButton.getText() != Common.questionList.get(index).getAnswer() && index == totalQuestion-1){
+                Intent intent = new Intent(this, ResultsActivity.class);
+                Bundle dataSend = new Bundle();
+                dataSend.putInt("SCORE", score);
+                dataSend.putInt("TOTAL", totalQuestion);
+                dataSend.putInt("CORRECT", correctAnswer);
+                intent.putExtras(dataSend);
+                startActivity(intent);
+                finish();
+            }
+            else {
                 showQuestion(++index);
             }
-//            else {
-//                Intent intent = new Intent(this, ResultsActivity.class);
-//                Bundle dataSend = new Bundle();
-//                dataSend.putInt("SCORE", score);
-//                dataSend.putInt("TOTAL", totalQuestion);
-//                dataSend.putInt("CORRECT", correctAnswer);
-//                intent.putExtras(dataSend);
-//                startActivity(intent);
-//                finish();
-//            }
             txtScore.setText(String.format("%d", score));
         }
         else {
@@ -99,8 +108,8 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     }
 
     private void showQuestion (int index){
-        if (index < totalQuestion)
-        {
+        if (index < totalQuestion) {
+
             thisQuestion++;
             txtQuestionNum.setText(String.format("%d / %d", thisQuestion, totalQuestion));
             progressBar.setProgress(0);
@@ -108,12 +117,10 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
 
             question_text.setText(Common.questionList.get(index).getQuestion());
             question_text.setVisibility(View.VISIBLE);
-
+            btnA.setText(Common.questionList.get(index).getA());
+            btnB.setText(Common.questionList.get(index).getB());
+            btnC.setText(Common.questionList.get(index).getC());
         }
-        btnA.setText(Common.questionList.get(index).getA());
-        btnB.setText(Common.questionList.get(index).getB());
-        btnC.setText(Common.questionList.get(index).getC());
-
         mCountDown.start();
     }
 
@@ -121,10 +128,6 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
     protected void onResume() {
         super.onResume();
 
-        totalQuestion = Common.questionList.size()-1;
-        if(totalQuestion > 4){
-            totalQuestion = 5;
-        }
 
         mCountDown = new CountDownTimer(TIMEOUT, INTERVAL) {
             @Override
@@ -137,11 +140,9 @@ public class Quiz extends AppCompatActivity implements View.OnClickListener {
             public void onFinish() {
                 mCountDown.cancel();
                 showQuestion(++index);
-
             }
         };
         showQuestion(index);
     }
 }
-
 

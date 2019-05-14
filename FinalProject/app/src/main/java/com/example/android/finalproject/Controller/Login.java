@@ -96,7 +96,7 @@ public class Login extends AppCompatActivity {
 
     public void Temp(View view) {
         //Intent to register form
-        Intent temp = new Intent(Login.this,  AdminMenu.class);
+        Intent temp = new Intent(Login.this,  Home.class);
         startActivity(temp);
     }
 

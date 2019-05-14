@@ -1,7 +1,10 @@
 package com.example.android.finalproject.Controller;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -11,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Arrays;
 import java.util.Collections;
 
 import static com.example.android.finalproject.Model.Common.questionList;
@@ -50,10 +55,12 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         database = FirebaseDatabase.getInstance();
         questions = database.getReference("/questions");
 
         firebaseAuth = FirebaseAuth.getInstance();
+        loadQuestion();
 
         drawerLayout = (DrawerLayout) findViewById(R.id.activity_main);
 
@@ -61,10 +68,9 @@ public class Home extends AppCompatActivity {
 
 
         drawerLayout.addDrawerListener(toggle);
-
         toggle.syncState();
 
-        loadQuestion();
+
 
 
 
@@ -147,42 +153,90 @@ public class Home extends AppCompatActivity {
 
     public void playGame(View view) {
         //Intent to Quiz
-        Intent playQuiz = new Intent(Home.this, Quiz.class);
-        startActivity(playQuiz);
-    }
 
-    public void quitGame(View view) {
-        //Exits game
-        finish();
-        moveTaskToBack(true);
-    }
-
-    @Override
-    public void onBackPressed()
-    {
+         Intent playQuiz = new Intent(Home.this, Quiz.class);
+        try {
+            startActivity(playQuiz);
+        } catch (Exception e) {
+//            finish();
+//            startActivity(getIntent());
+        }
 
     }
 
-    private void loadQuestion() {
+        public void quitGame (View view){
+            //Exits game
+            finish();
+            moveTaskToBack(true);
+        }
 
-        if(questionList.size() > 0)
-            questionList.clear();
+        @Override
+        public void onBackPressed ()
+        {
 
-        questions.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Question que = snapshot.getValue(Question.class);
-                    que.setId(snapshot.getKey());
-                    questionList.add(que);
+        }
+
+        private void loadQuestion () {
+
+            if (questionList.size() > 0)
+                questionList.clear();
+
+            questions.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                        Question que = snapshot.getValue(Question.class);
+                        que.setId(snapshot.getKey());
+                        questionList.add(que);
+                    }
+                    //Generates Random List
+                    Collections.shuffle(questionList);
                 }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                }
+            });
+        }
+
+
+        public class DefaultExceptionHandler implements Thread.UncaughtExceptionHandler {
+
+            Activity activity;
+
+            public DefaultExceptionHandler(Activity activity) {
+                this.activity = activity;
+//            Context context = getApplicationContext();
+//            CharSequence text = "Sorry, Could n";
+//            int duration = Toast.LENGTH_SHORT;
+//
+//            Toast toast = Toast.makeText(context, text, duration);
+//            toast.show();
+                Context context = getApplicationContext();
+                CharSequence text = "Sorry, Could not connect to server!";
+                int duration = Toast.LENGTH_SHORT;
+
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
             }
+
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void uncaughtException(Thread thread, final Throwable ex) {
+
+                Intent intent = new Intent(activity, Home.class);
+                Log.d("ERROR", "---------" + ex.getMessage());
+                Log.d("ERROR", "--------" + ex.getCause());
+                Log.d("ERROR", "--------" + Arrays.toString(ex.getStackTrace()));
+                activity.startActivity(intent);
+                activity.finish();
+
+                System.exit(0);
+
             }
-        });
-        //Random List
-        Collections.shuffle(questionList);
+
+
+        }
+
     }
-}
+
 

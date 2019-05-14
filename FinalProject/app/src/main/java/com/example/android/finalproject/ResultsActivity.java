@@ -44,7 +44,7 @@ public class ResultsActivity extends AppCompatActivity {
         });
 
         Bundle extra = getIntent().getExtras();
-        if(extra != null){
+        if(extra != null) {
             int score = extra.getInt("SCORE");
             int totalQuestion = extra.getInt("TOTAL");
             int correctAnswer = extra.getInt("CORRECT");
@@ -54,8 +54,6 @@ public class ResultsActivity extends AppCompatActivity {
 
             progressBar.setMax(totalQuestion);
             progressBar.setProgress(correctAnswer);
-
-
 
         }
     }
