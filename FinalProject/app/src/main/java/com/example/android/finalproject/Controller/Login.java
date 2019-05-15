@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 //Activity to log in a user or redirects them to a register form
-public class Login extends AppCompatActivity {
+public class Login extends BaseActivity {
 
     //Instantiating views
     EditText loginEmail_editText;
@@ -31,6 +31,7 @@ public class Login extends AppCompatActivity {
 
     //Declaring an instance of FirebaseAuth
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

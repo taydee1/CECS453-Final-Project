@@ -8,11 +8,12 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.android.finalproject.Controller.BaseActivity;
 import com.example.android.finalproject.Controller.Home;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ResultsActivity extends AppCompatActivity {
+public class ResultsActivity extends BaseActivity {
 
     Button btnTryAgain;
     TextView txtResultScore, getTxtResultQuestion;

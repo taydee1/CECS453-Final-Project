@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.example.android.finalproject.R;
 
-public class AboutPage extends AppCompatActivity {
+public class AboutPage extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

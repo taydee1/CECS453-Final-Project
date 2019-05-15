@@ -13,7 +13,7 @@ import com.example.android.finalproject.Model.Common;
 import com.example.android.finalproject.R;
 import com.example.android.finalproject.ResultsActivity;
 
-public class Quiz extends AppCompatActivity implements View.OnClickListener {
+public class Quiz extends BaseActivity implements View.OnClickListener {
 
     final static long INTERVAL = 1000;
     final static long TIMEOUT = 7000;

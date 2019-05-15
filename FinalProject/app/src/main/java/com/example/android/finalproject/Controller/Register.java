@@ -20,7 +20,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 //Register Activity to register a user or redirect them to login form if user has a login
-public class Register extends AppCompatActivity {
+public class Register extends BaseActivity {
 
     //Instantiating views
     Button regButton;

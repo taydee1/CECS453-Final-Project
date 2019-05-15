@@ -39,7 +39,7 @@ import java.util.Collections;
 
 import static com.example.android.finalproject.Model.Common.questionList;
 
-public class Home extends AppCompatActivity {
+public class Home extends BaseActivity {
     Button btnPlay;
     FirebaseDatabase database;
     DatabaseReference questions;
@@ -66,72 +66,6 @@ public class Home extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         loadQuestion();
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.activity_main);
-
-        toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.Open, R.string.Close);
-
-
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-
-
-
-        navigationView = (NavigationView) findViewById(R.id.nv);
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            @Override
-
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                int id = item.getItemId();
-
-                switch (id) {
-
-                    case R.id.password:
-
-                        Intent changePassword = new Intent(Home.this, Password.class);
-                        startActivity(changePassword);
-                        break;
-
-                    case R.id.profile:
-                        Intent profilePage = new Intent(Home.this, ChangeProfile.class);
-                        startActivity(profilePage);
-
-                        break;
-
-                    case R.id.about:
-                        Intent aboutPage = new Intent(Home.this, AboutPage.class);
-                        startActivity(aboutPage);
-
-                        break;
-
-                    case R.id.help:
-                        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto","admin@admin.com", null));
-                        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Help");
-                        startActivity(Intent.createChooser(emailIntent, "Send email..."));
-                        break;
-
-                    case R.id.logout:
-
-                        firebaseAuth.getInstance().signOut();
-                        Intent logout = new Intent(Home.this, Login.class);
-                        startActivity(logout);
-                        finish();
-                        break;
-
-
-                    default:
-
-                        return true;
-
-                }
-
-                return true;
-            }
-
-        });
 
 
         //check if admin uid
