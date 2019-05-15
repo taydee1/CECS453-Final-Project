@@ -44,11 +44,8 @@ public class Home extends BaseActivity {
     FirebaseDatabase database;
     DatabaseReference questions;
 
-    private DrawerLayout drawerLayout;
 
-    private ActionBarDrawerToggle toggle;
 
-    private NavigationView navigationView;
     FirebaseAuth firebaseAuth;
 
 
@@ -69,18 +66,6 @@ public class Home extends BaseActivity {
     }
 
 
-    @Override
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-
-        if (toggle.onOptionsItemSelected(item))
-
-            return true;
-
-        return super.onOptionsItemSelected(item);
-
-    }
 
 
     public void playGame(View view) {

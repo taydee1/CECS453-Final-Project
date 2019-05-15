@@ -76,6 +76,12 @@ public class BaseActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
 
                 switch (menuItem.getItemId()) {
+
+                    case R.id.home:
+                        Intent home = new Intent(BaseActivity.this, Home.class);
+                        startActivity(home);
+                        break;
+
                     case R.id.password:
 
                         Intent changePassword = new Intent(BaseActivity.this, Password.class);

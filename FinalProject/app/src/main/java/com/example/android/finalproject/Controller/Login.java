@@ -22,7 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 //Activity to log in a user or redirects them to a register form
-public class Login extends BaseActivity {
+public class Login extends AppCompatActivity {
 
     //Instantiating views
     EditText loginEmail_editText;
