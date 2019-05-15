@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.android.finalproject.Controller.BaseActivity;
 import com.example.android.finalproject.Controller.Home;
 import com.example.android.finalproject.R;
 
-public class AdminMenu extends AppCompatActivity {
+public class AdminMenu extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

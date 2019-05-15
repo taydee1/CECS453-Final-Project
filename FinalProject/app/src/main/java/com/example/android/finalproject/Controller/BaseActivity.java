@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.android.finalproject.R;
+import com.example.android.finalproject.View.AdminMenu;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.prefs.Preferences;
@@ -36,7 +38,10 @@ public class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+
+
     }
 
     protected boolean useToolbar() {
@@ -114,6 +119,30 @@ public class BaseActivity extends AppCompatActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
+
+        firebaseAuth = FirebaseAuth.getInstance();
+//        loadQuestion();
+
+        //check if admin uid
+        String admin_ = "RwobSJTRjkP3MDi1ejcf9lcCHex1";
+        try{
+            if(firebaseAuth.getUid().equals(admin_)){
+                Menu menu = navigationView.getMenu();
+                menu.add("Admin Menu").setIcon(R.drawable.admin).setOnMenuItemClickListener(
+                        new MenuItem.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem item) {
+                                Intent admin = new Intent(context, AdminMenu.class);
+                                startActivity(admin);
+                                return true;
+                            }
+                        }
+                );
+            }
+        }catch (Exception e){
+            //if current user is null
+            Log.e("error", e.getMessage());
+        }
 
 
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.Open, R.string.Close) {

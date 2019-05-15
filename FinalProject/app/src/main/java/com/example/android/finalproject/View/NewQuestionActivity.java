@@ -20,6 +20,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.android.finalproject.Controller.BaseActivity;
 import com.example.android.finalproject.Model.Question;
 import com.example.android.finalproject.R;
 import com.google.firebase.database.DataSnapshot;
@@ -35,7 +36,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NewQuestionActivity extends AppCompatActivity {
+public class NewQuestionActivity extends BaseActivity {
 
     EditText enterQuestion;
     EditText choiceA;

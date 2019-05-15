@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import com.example.android.finalproject.Controller.BaseActivity;
 import com.example.android.finalproject.Controller.DataAdapter;
 import com.example.android.finalproject.Model.Question;
 import com.example.android.finalproject.R;
@@ -19,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 
-public class ViewDelete extends AppCompatActivity{
+public class ViewDelete extends BaseActivity {
 
     ArrayList<Question> questions;
     private RecyclerView recyclerView;

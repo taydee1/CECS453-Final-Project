@@ -66,23 +66,6 @@ public class Home extends BaseActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         loadQuestion();
 
-
-
-        //check if admin uid
-        String admin_ = "RwobSJTRjkP3MDi1ejcf9lcCHex1";
-        if(firebaseAuth.getUid().equals(admin_)){
-            Menu menu = navigationView.getMenu();
-            menu.add("Admin Menu").setIcon(R.drawable.admin).setOnMenuItemClickListener(
-                    new MenuItem.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem item) {
-                            Intent admin = new Intent(Home.this, AdminMenu.class);
-                            startActivity(admin);
-                            return true;
-                        }
-                    }
-            );
-        }
     }
 
 
