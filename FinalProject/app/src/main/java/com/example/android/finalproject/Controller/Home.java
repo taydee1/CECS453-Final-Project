@@ -67,7 +67,7 @@ public class Home extends BaseActivity {
 
 
 
-
+    //Method that redirects user to the actual playing of the quiz
     public void playGame(View view) {
         //Intent to Quiz
 
@@ -81,12 +81,14 @@ public class Home extends BaseActivity {
 
     }
 
+        //method that will quit the game once button is clicked
         public void quitGame (View view){
             //Exits game
             finish();
             moveTaskToBack(true);
         }
 
+        //Prohibits user from using the back button on this page
         @Override
         public void onBackPressed ()
         {

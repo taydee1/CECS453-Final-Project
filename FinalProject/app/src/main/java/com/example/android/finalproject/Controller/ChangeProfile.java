@@ -70,6 +70,7 @@ public class ChangeProfile extends BaseActivity {
 
         firebaseAuth = FirebaseAuth.getInstance();
 
+        //Button that allows user to submit updated profile information
         changeProfileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -101,6 +102,7 @@ public class ChangeProfile extends BaseActivity {
     }
 
 
+    //Updates user information in database
     private void updateUser(String fullName, String username) {
 
         User information = new User(fullName, username);

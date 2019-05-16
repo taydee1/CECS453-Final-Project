@@ -33,6 +33,7 @@ public class Password extends BaseActivity {
         submitButton = findViewById(R.id.submit);
         firebaseAuth = FirebaseAuth.getInstance();
 
+        //Method that allows user to change password
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
