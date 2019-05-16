@@ -31,7 +31,9 @@ public class Login extends AppCompatActivity {
 
     //Declaring an instance of FirebaseAuth
     private FirebaseAuth firebaseAuth;
-    private FirebaseUser firebaseUser;
+
+    int counter = 3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +82,13 @@ public class Login extends AppCompatActivity {
 
                                 } else {
                                     //If login fails successful, toast displays
-                                    Toast.makeText(Login.this, "Login Failed", Toast.LENGTH_SHORT).show();
+                                    counter--;
+                                    Toast.makeText(Login.this, "Login Failed. You have " + counter + " attempts left.", Toast.LENGTH_SHORT).show();
+                                }
+
+                                if (counter == 0)
+                                {
+                                    System.exit(1);
                                 }
                             }
                         });
